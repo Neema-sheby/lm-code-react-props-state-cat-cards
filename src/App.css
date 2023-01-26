@@ -1,143 +1,256 @@
 :root {
-	--navy: #0d3b66;
-	--light: #faf0ca;
-	--yellow: #f4d35e;
-	--orange: #ee964b;
-	--red: #f95738;
+  --navy: #0d3b66;
+  --light: #faf0ca;
+  --yellow: #f4d35e;
+  --orange: #ee964b;
+  --red: #f95738;
 }
 
 @font-face {
-	font-family: 'SleepyCat';
-	src: local('SleepyCat'), url(./fonts/SleepyCat.ttf) format('woff');
+  font-family: "SleepyCat";
+  src: local("SleepyCat"), url(./fonts/SleepyCat.ttf) format("woff");
 }
 
 @font-face {
-	font-family: 'Cattino';
-	src: local('Cattino'), url(./fonts/Cattino.otf) format('woff');
+  font-family: "Cattino";
+  src: local("Cattino"), url(./fonts/Cattino.otf) format("woff");
 }
 
 body {
-	background-color: var(--light);
-	display: flex;
-	justify-content: center;
-	margin: 0;
+  background-color: var(--light);
+  margin: 0 3rem;
 }
 
 .header__container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
 }
 
 .header__title {
-	color: var(--navy);
-	font-family: 'Cattino';
+  color: var(--navy);
+  font-family: "Cattino";
+}
+
+.header__subtitle {
+  display: block;
+  width: 100%;
+  color: var(--navy);
+  font-family: "Cattino";
+  font-size: 3rem;
+  text-align: center;
+  border-top: 0.05rem solid #000;
+  border-bottom: 0.05rem solid #000;
+  padding: 0.5rem 0;
 }
 
 .header__welcome {
-	font-size: 3rem;
-	margin-bottom: 0;
-	margin-top: 0.25em;
+  font-size: 3rem;
+  margin-bottom: 0;
+  margin-top: 0.25em;
 }
 
 .cards__wrapper {
-	display: flex;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
-	max-width: 62.5em;
-	min-width: 70vw;
-	min-height: 45vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--yellow);
+  font-family: "Cattino";
+  font-size: 2rem;
+  color: var(--navy);
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.form__input,
+.form__select {
+  font-family: "Cattino";
+  height: 3rem;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+  box-shadow: 0 0.4rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+}
+.form__select {
+  width: 20%;
+  cursor: pointer;
+}
+
+.form__input {
+  width: 15%;
+}
+
+.form__input:focus,
+.form__select:focus {
+  outline: none;
+  border: 0.3rem solid var(--red);
+}
+
+.btn__submit {
+  width: 10%;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-family: "Cattino";
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  background-color: var(--navy);
+  box-shadow: 0 0.4rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+  color: var(--yellow);
+  cursor: pointer;
+  transition: 0.2s all;
+  -webkit-transition: 0.2s all;
+  -moz-transition: 0.2s all;
+  -ms-transition: 0.2s all;
+  -o-transition: 0.2s all;
+}
+
+.btn__submit:focus,
+.btn__submit:hover {
+  box-shadow: none;
 }
 
 .card {
-	padding: 1.5em;
-	border: 6px solid var(--red);
-	max-width: 15.625em;
-	min-width: 11.25em;
-	border-radius: 7px;
-	background: var(--yellow);
-	margin-bottom: 1em;
-	box-shadow: 0 4px 8px 0 rgb(13, 59, 102, 0.4);
-	transition: 0.3s;
-	margin: 0.5em;
+  padding: 1.5em;
+  border: 6px solid var(--red);
+  max-width: 15.625em;
+  min-width: 11.25em;
+  border-radius: 7px;
+  background: var(--yellow);
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px 0 rgb(13, 59, 102, 0.4);
+  transition: 0.3s;
+  margin: 2em 1em;
 }
 
 .card:hover {
-	box-shadow: 0 4px 8px 0 rgb(13, 59, 102, 0.9);
+  box-shadow: 0 4px 8px 0 rgb(13, 59, 102, 0.9);
 }
 
 .card__text {
-	color: var(--navy);
-	font-family: 'SleepyCat';
-	font-size: 1.7rem;
-	margin: 0.2em;
+  color: var(--navy);
+  font-family: "SleepyCat";
+  font-size: 1.7rem;
+  margin: 0.2em;
 }
 
 .card__text__small {
-	color: var(--navy);
-	font-family: 'SleepyCat';
-	font-size: 1rem;
-	margin: 0.2em;
+  color: var(--navy);
+  font-family: "SleepyCat";
+  font-size: 1rem;
+  margin: 0.2em;
 }
 
 .card__header {
-	font-size: 2rem;
-	margin: 0.2em;
+  font-size: 2rem;
+  margin: 0.2em;
 }
 
 .card__image {
-	width: 100%;
-	border-radius: 5px;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .links {
-	color: var(--yellow);
-	font-family: 'Cattino';
-	font-size: 1.5em;
-	text-decoration: none;
+  color: var(--yellow);
+  font-family: "Cattino";
+  font-size: 1.5em;
+  text-decoration: none;
 }
 
 .links:hover {
-	color: var(--red);
+  color: var(--red);
 }
 
 .nav__container {
-	background: var(--navy);
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	border-radius: 5px;
-	box-shadow: 0 3px 7px 0 rgb(13, 59, 102, 0.2);
+  background: var(--navy);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  box-shadow: 0 3px 7px 0 rgb(13, 59, 102, 0.2);
 }
 
 .ul {
-	padding: 0;
-	list-style-type: none;
+  padding: 0;
+  list-style-type: none;
 }
 
 .ul__navbar {
-	width: 100%;
+  width: 100%;
 }
 
 .footer {
-	line-height: 2em;
-	margin-top: 0.5em;
-	padding: 1em 3em;
+  line-height: 2em;
+  margin-top: 5.5em;
+  padding: 1em 3em;
 }
 
 .footer__section {
-	min-width: 9.375em;
+  min-width: 9.375em;
 }
 
 .icon {
-	max-width: 1.875em;
+  max-width: 1.875em;
 }
 
 @media only screen and (max-width: 405px) {
-	.header__title {
-		padding-left: 1.5rem;
-	}
+  .header__title {
+    padding-left: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .form {
+    flex-wrap: wrap;
+  }
+  .form__select {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  .form__input {
+    margin: 1rem 0;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .form {
+    flex-wrap: wrap;
+  }
+
+  .form__input {
+    width: 100%;
+  }
+
+  .btn__submit {
+    width: 30%;
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .btn__submit {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  body {
+    margin: 0;
+  }
+  .form {
+    padding: 2rem 1.5rem;
+  }
 }
