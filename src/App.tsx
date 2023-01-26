@@ -42,7 +42,7 @@ const reducer = (state: State, action: Action) => {
     case "dogs":
       return { ...state, dogs: action.payload };
     default:
-      throw new Error();
+      return state;
   }
 };
 
