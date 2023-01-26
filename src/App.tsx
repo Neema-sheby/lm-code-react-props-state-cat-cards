@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import "./App.css";
 import Navbar from "./components/navbar";
 import Header from "./components/header";
@@ -11,17 +11,49 @@ import { dogData, dogImages } from "./data/dogData";
 import { AnimalDetail } from "./data/interface";
 import { v4 as uuidv4 } from "uuid";
 
+interface State {
+  data: Array<AnimalDetail>;
+  animal: string;
+  cats: Array<AnimalDetail>;
+  dogs: Array<AnimalDetail>;
+}
+
+const initialState: State = {
+  data: [],
+  animal: "",
+  cats: catData,
+  dogs: dogData,
+};
+
+type Action =
+  | { type: "data"; payload: Array<AnimalDetail> }
+  | { type: "animal"; payload: string }
+  | { type: "cats"; payload: Array<AnimalDetail> }
+  | { type: "dogs"; payload: Array<AnimalDetail> };
+
+const reducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case "data":
+      return { ...state, data: action.payload };
+    case "animal":
+      return { ...state, animal: action.payload };
+    case "cats":
+      return { ...state, cats: action.payload };
+    case "dogs":
+      return { ...state, dogs: action.payload };
+    default:
+      throw new Error();
+  }
+};
+
 function App(): JSX.Element {
-  // JavaScript/TypeScript code can be inserted here!
-  const [data, setData] = useState<Array<AnimalDetail>>([]);
-  const [animal, setAnimal] = useState<string>("");
-  const [cats, setCats] = useState<Array<AnimalDetail>>(catData);
-  const [dogs, setDogs] = useState<Array<AnimalDetail>>(dogData);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { data, animal, cats, dogs } = state;
 
   useEffect(
     function () {
-      if (animal === "cat") setCats(data);
-      if (animal === "dog") setDogs(data);
+      if (animal === "cat") dispatch({ type: "cats", payload: data });
+      if (animal === "dog") dispatch({ type: "dogs", payload: data });
     },
     [animal, data]
   );
@@ -29,7 +61,10 @@ function App(): JSX.Element {
   return (
     <>
       <Navbar />
-      <Form setData={setData} setAnimalName={setAnimal} />
+      <Form
+        setData={(data) => dispatch({ type: "data", payload: data })}
+        setAnimalName={(data) => dispatch({ type: "animal", payload: data })}
+      />
       <Header numCat={cats.length} numDog={dogs.length} />
       <main>
         <Heading heading="Cats" />
@@ -65,7 +100,6 @@ function App(): JSX.Element {
           </div>
         </div>
       </main>
-
       <Footer />
     </>
   );
